@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management</title>
+</head>
+<body>
+    <h1>Book Management</h1>
+
+    <div>
+        <h2>Add a Book</h2>
+        <form id="addBookForm">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required><br><br>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required><br><br>
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" name="isbn" required><br><br>
+            <input type="submit" value="Add Book">
+        </form>
+    </div>
+
+    <div>
+        <h2>Books List</h2>
+        <button id="fetchBooks">Fetch Books</button>
+        <ul id="booksList"></ul>
+    </div>
+
+    <script>
+        document.getElementById("addBookForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const title = document.getElementById("title").value;
+            const author = document.getElementById("author").value;
+            const isbn = document.getElementById("isbn").value;
+
+            fetch("http://localhost:8080/books", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ title, author, isbn })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Book added successfully!");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        });
+
+        document.getElementById("fetchBooks").addEventListener("click", function() {
+            fetch("http://localhost:8080/books")
+            .then(response => response.json())
+            .then(data => {
+                const booksList = document.getElementById("booksList");
+                booksList.innerHTML = "";
+                data.forEach(book => {
+                    const li = document.createElement("li");
+                    li.textContent = `${book.title} by ${book.author} (ISBN: ${book.isbn})`;
+                    booksList.appendChild(li);
+                });
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        });
+    </script>
+</body>
+</html>
