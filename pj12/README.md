@@ -32,8 +32,9 @@ INSERT INTO items (name, user_id) VALUES ('手机', 1);   -- 张三的手机
 
 ## 接口实现
 1.获取用户名称
-// GetUserByID 根据用户ID获取用户名称
+
 ```go
+// GetUserByID 根据用户ID获取用户名称
 func GetUserByID(c *gin.Context) {
     id := c.Param("id") // 从请求中获取用户ID
     var user models.User
