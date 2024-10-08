@@ -81,6 +81,7 @@ func GetItemByID(c *gin.Context) {
 }
 ```
 3.路由设置
+
 我们将上述接口绑定到路由中：
 ```go
 func SetupRouter() *gin.Engine {
@@ -98,7 +99,11 @@ func SetupRouter() *gin.Engine {
 
 ## 测试接口
 使用 Postman 来测试接口:
+
 获取用户名称：GET http://localhost:8080/user/1  # 查询用户ID为1（张三）
+
 查询结果：![图片](https://github.com/user-attachments/assets/08bff73b-ba9e-49fb-a6b9-80a34dce6fb4)
+
 获取物品名称：GET http://localhost:8080/item/2  # 查询物品ID为2（电脑）
+
 查询结果：![图片](https://github.com/user-attachments/assets/e0ca2688-fdce-488c-ab23-b1f9289f0d69)
