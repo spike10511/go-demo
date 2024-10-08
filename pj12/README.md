@@ -27,6 +27,8 @@ INSERT INTO items (name, user_id) VALUES ('书籍', 1);  -- 张三的书籍
 INSERT INTO items (name, user_id) VALUES ('电脑', 2);  -- 李四的电脑
 INSERT INTO items (name, user_id) VALUES ('手机', 1);   -- 张三的手机
 ```
+![8HV_W)9XMFJQK$Y689${JBA](https://github.com/user-attachments/assets/1e8ca38d-e802-4d26-9b2d-2e89006f1b73)
+
 
 ## 接口实现
 1.获取用户名称
