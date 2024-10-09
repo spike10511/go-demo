@@ -99,7 +99,7 @@ func SetupRouter() *gin.Engine {
 ```
 
 
-4.数据库
+4.数据库连接
 ```go
 package database
 
